@@ -304,7 +304,7 @@ nav .container {
 }
 .hero-split {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 55% 45%;
   gap: 48px;
   align-items: center;
   padding: 8px 0 36px;
@@ -361,6 +361,7 @@ nav .container {
 }
 .hero-sub br { display: inline; }
 .mobile-hero-visual {
+  display: none;
   margin-top: 32px;
 }
 .mobile-hero-visual img {
@@ -371,7 +372,6 @@ nav .container {
 }
 /* ─── Hero Mockups (Right Side) — hidden, replaced by devices-mockup.png ─── */
 .hero-right {
-  display: none;
   position: relative;
   height: 480px;
   perspective: 1200px;
@@ -1822,8 +1822,10 @@ footer {
   .hero-badge { font-size: 0.75rem; margin-top: 40px; }
   .hero-sub { font-size: 0.9rem; max-width: 100%; }
 
-  /* 2. Devices mockup image on mobile */
+  /* 2. Hide CSS mockups on mobile, show device image */
+  .hero-right { display: none !important; }
   .mobile-hero-visual {
+    display: block;
     margin-top: 30px;
     text-align: center;
   }

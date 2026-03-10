@@ -1800,10 +1800,12 @@ footer {
 
   /* 2. Device mockup image on mobile */
   .hero-mockup-col {
-    justify-content: center;
+    justify-content: stretch;
+    padding-right: 0;
   }
   .hero-mockup-col img {
-    max-width: 90%;
+    width: 100%;
+    max-width: 100%;
     box-shadow: 0 6px 24px rgba(0,0,0,0.12);
   }
   .hero-actions {
@@ -1816,9 +1818,11 @@ footer {
     justify-content: center;
     width: 100%;
     min-height: 44px;
-    padding: 16px 32px;
-    font-size: 0.95rem;
+    padding: 14px 20px;
+    font-size: 0.88rem;
+    white-space: nowrap;
   }
+  .btn-primary svg { display: none; }
   .proof-inner { flex-direction: column; }
   .proof-item {
     flex: 1 1 100%;
@@ -1831,7 +1835,17 @@ footer {
     padding-bottom: 60px;
   }
   .stats-section-label { margin-bottom: 32px; }
-  .stats-layout { gap: 32px; }
+  /* Reorder stats: heading first, then Google search + quote, then consequence */
+  .stats-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .stats-right { order: 1; }
+  .stats-left { order: 2; }
+  .stats-consequence { order: 3; }
+  /* Hide the paragraph in stats-right on mobile */
+  .stats-right .section-sub { display: none; }
   .stats-quote-text { font-size: 0.9rem; }
   /* 3. Quote: continuous sentence on mobile, no line break */
   .stats-quote-text .quote-break { display: none; }
@@ -1874,19 +1888,20 @@ footer {
   .section-heading { font-size: clamp(1.6rem, 5vw, 2.2rem); }
   .section-sub { font-size: 0.92rem; }
   .branchen-tabs {
-    gap: 6px;
-    justify-content: flex-start;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    gap: 8px;
+    justify-content: center;
+    overflow-x: visible;
     flex-wrap: wrap;
   }
   /* 3. Branchen tab tap highlight fix */
   .branchen-tab {
     font-size: 0.8rem;
-    padding: 10px 16px;
+    padding: 10px 0;
     min-height: 44px;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    flex-basis: 30%;
     outline: none;
     box-shadow: none;
     -webkit-tap-highlight-color: transparent;
@@ -1916,7 +1931,7 @@ footer {
   .value-intro { font-size: 0.95rem; margin-bottom: 40px; }
   .value-layout { gap: 32px; }
   .value-image { min-height: 260px; }
-  .value-copy .highlight-price { font-size: 1.1rem; padding: 16px 20px; }
+  .value-copy .highlight-price { font-size: 0.95rem; padding: 16px 20px; }
   .value-features { gap: 12px; margin-top: 20px; }
   .value-feat { font-size: 0.86rem; min-height: 44px; }
   .final-cta { padding: 80px 0; }

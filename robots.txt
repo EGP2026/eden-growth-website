@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://edengrowthpartners.com/sitemap.xml

@@ -1,0 +1,2368 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eden Growth Partners | Professionelle Websites für Schweizer KMU</title>
+<meta name="description" content="Professionelle Website in einer Woche, für weniger als CHF 3'000. Für Handwerker, Praxen, Beauty, Gastro und Beratung in der Schweiz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ─── Reset & Foundations ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --teal: #1a3a4a;
+  --teal-deep: #0c1f2b;
+  --teal-mid: #15303e;
+  --teal-light: #264d60;
+  --gold: #c8aa82;
+  --gold-bright: #d4b88e;
+  --gold-light: #ddc9a8;
+  --gold-pale: #f0e6d6;
+  --cream: #f7f5f0;
+  --cream-warm: #f2efe8;
+  --white: #ffffff;
+  --off-white: #fafaf8;
+  --text: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #7a7a7a;
+  --border: rgba(200, 170, 130, 0.18);
+  --shadow-xs: 0 1px 3px rgba(15, 37, 48, 0.04);
+  --shadow-sm: 0 4px 12px rgba(15, 37, 48, 0.06);
+  --shadow-md: 0 8px 30px rgba(15, 37, 48, 0.10);
+  --shadow-lg: 0 20px 60px rgba(15, 37, 48, 0.15);
+  --shadow-xl: 0 32px 80px rgba(15, 37, 48, 0.20);
+  --glow-gold: 0 0 40px rgba(200, 170, 130, 0.35), 0 0 80px rgba(200, 170, 130, 0.15);
+  --radius: 14px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--teal-deep);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ─── Reveal Animations ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+.reveal-delay-4 { transition-delay: 0.48s; }
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+/* ─── Navigation ─── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+nav.scrolled {
+  background: rgba(12, 31, 43, 0.88);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(200, 170, 130, 0.08);
+}
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-logo {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.nav-link {
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  transition: color 0.3s;
+  display: none;
+}
+.nav-link:hover { color: var(--gold); }
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--teal-deep);
+  background: var(--gold);
+  padding: 11px 26px;
+  border-radius: 100px;
+  transition: all 0.3s;
+  box-shadow: 0 2px 12px rgba(200, 170, 130, 0.25);
+}
+.nav-cta:hover {
+  background: var(--gold-bright);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(200, 170, 130, 0.4);
+}
+.nav-cta svg { width: 16px; height: 16px; }
+
+/* ─── Primary CTA Button ─── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--teal-deep);
+  background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 100%);
+  padding: 20px 44px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 24px rgba(200, 170, 130, 0.35), 0 0 60px rgba(200, 170, 130, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: var(--glow-gold);
+}
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary svg { width: 20px; height: 20px; position: relative; }
+
+/* ─── Hero ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: var(--teal-deep);
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.12;
+  filter: saturate(0.3);
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, var(--teal-deep) 0%, rgba(12, 31, 43, 0.65) 40%, rgba(12, 31, 43, 0.8) 70%, var(--teal-deep) 100%),
+    radial-gradient(ellipse 80% 60% at 30% 50%, rgba(200, 170, 130, 0.06) 0%, transparent 100%);
+}
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px;
+  pointer-events: none;
+  z-index: 1;
+}
+.hero .container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+.hero-split {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 48px;
+  align-items: center;
+  padding: 8px 0 36px;
+}
+.hero-left {
+  max-width: 620px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(200, 170, 130, 0.08);
+  border: 1px solid rgba(200, 170, 130, 0.15);
+  padding: 10px 20px;
+  border-radius: 100px;
+  backdrop-filter: blur(8px);
+  width: fit-content;
+  margin-bottom: 20px;
+}
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+.hero h1 {
+  font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+  color: var(--white);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+.hero h1 .gold { color: var(--gold); }
+.hero-sub {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 500px;
+  line-height: 1.75;
+  font-weight: 400;
+  margin-bottom: 36px;
+}
+.hero-actions {
+  margin-bottom: 0;
+}
+.hero-sub br { display: inline; }
+
+/* ─── Hero Mockups (Right Side) ─── */
+.hero-right {
+  position: relative;
+  height: 480px;
+  perspective: 1200px;
+}
+
+/* Browser Frame Base */
+.browser-frame {
+  position: absolute;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255,255,255,0.08);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.browser-frame:hover {
+  z-index: 10 !important;
+}
+.browser-topbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #f0f0f0;
+  border-bottom: 1px solid #e0e0e0;
+}
+.browser-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.browser-dot.red { background: #ff5f57; }
+.browser-dot.yellow { background: #ffbd2e; }
+.browser-dot.green { background: #28c840; }
+.browser-url {
+  flex: 1;
+  margin-left: 10px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.65rem;
+  color: #888;
+  font-family: 'DM Sans', sans-serif;
+  border: 1px solid #e5e5e5;
+}
+.browser-body {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mockup 1: Handwerker Site (back, largest) */
+.mockup-handwerker {
+  width: 380px;
+  top: -10px;
+  right: 0;
+  z-index: 1;
+  transform: rotate(2deg) translateZ(-20px);
+}
+.mockup-handwerker:hover {
+  transform: rotate(0deg) translateZ(0px) scale(1.03);
+}
+.mockup-hw-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 18px;
+  background: var(--white);
+  border-bottom: 1px solid #eee;
+}
+.mockup-hw-logo {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--teal);
+  letter-spacing: 0.02em;
+}
+.mockup-hw-nav-items {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.mockup-hw-nav-item {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.44rem;
+  color: #666;
+  font-weight: 500;
+}
+.mockup-hw-nav-tel {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.46rem;
+  font-weight: 700;
+  color: var(--teal);
+  background: rgba(200,170,130,0.12);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.mockup-hw-hero {
+  height: 110px;
+  position: relative;
+  overflow: hidden;
+}
+.mockup-hw-hero-img {
+  position: absolute;
+  inset: 0;
+  background: url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=60&auto=format") center/cover;
+}
+.mockup-hw-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26,58,74,0.85), rgba(26,58,74,0.6));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 22px;
+}
+.mockup-hw-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 0.95rem;
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 3px;
+}
+.mockup-hw-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.48rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 8px;
+}
+.mockup-hw-btn {
+  display: inline-block;
+  padding: 3px 12px;
+  background: var(--gold);
+  color: var(--teal-deep);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.44rem;
+  font-weight: 700;
+  border-radius: 4px;
+  width: fit-content;
+}
+.mockup-hw-content {
+  padding: 12px 18px;
+  background: white;
+}
+.mockup-hw-section-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.48rem;
+  font-weight: 700;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.mockup-hw-services {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.mockup-hw-service {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-family: 'DM Sans', sans-serif;
+}
+.mockup-hw-service:last-child { border-bottom: none; }
+.mockup-hw-service-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.mockup-hw-service-name {
+  font-size: 0.46rem;
+  color: #333;
+  font-weight: 500;
+}
+.mockup-hw-service-desc {
+  font-size: 0.4rem;
+  color: #999;
+  margin-left: auto;
+}
+
+/* Mockup 2: Praxis Site (front left) */
+.mockup-praxis {
+  width: 320px;
+  top: 70px;
+  left: 0;
+  z-index: 3;
+  transform: rotate(-3deg) translateZ(20px);
+}
+.mockup-praxis:hover {
+  transform: rotate(0deg) translateZ(40px) scale(1.03);
+}
+.mockup-pr-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background: white;
+  border-bottom: 2px solid var(--teal);
+}
+.mockup-pr-logo {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--teal);
+  letter-spacing: 0.01em;
+}
+.mockup-pr-nav-items {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.mockup-pr-nav-item {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.42rem;
+  color: #777;
+  font-weight: 500;
+}
+.mockup-pr-cta-btn {
+  padding: 3px 9px;
+  background: var(--teal);
+  color: white;
+  font-size: 0.42rem;
+  font-weight: 600;
+  border-radius: 4px;
+  font-family: 'DM Sans', sans-serif;
+}
+.mockup-pr-hero {
+  height: 90px;
+  position: relative;
+  overflow: hidden;
+}
+.mockup-pr-hero-img {
+  position: absolute;
+  inset: 0;
+  background: url("https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=400&q=60&auto=format") center/cover;
+}
+.mockup-pr-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(232,244,240,0.92), rgba(212,235,228,0.88));
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  gap: 14px;
+}
+.mockup-pr-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: url("https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=120&q=60&auto=format") center/cover;
+  flex-shrink: 0;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.mockup-pr-text h4 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 0.7rem;
+  color: var(--teal);
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+.mockup-pr-text p {
+  font-size: 0.44rem;
+  color: #555;
+  line-height: 1.4;
+  font-family: 'DM Sans', sans-serif;
+}
+.mockup-pr-content {
+  padding: 10px 16px;
+  background: white;
+}
+.mockup-pr-section-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.44rem;
+  font-weight: 700;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+.mockup-pr-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mockup-pr-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-family: 'DM Sans', sans-serif;
+}
+.mockup-pr-list-item:last-child { border-bottom: none; }
+.mockup-pr-list-name {
+  font-size: 0.44rem;
+  color: #333;
+  font-weight: 500;
+}
+.mockup-pr-list-arrow {
+  font-size: 0.4rem;
+  color: #ccc;
+}
+
+/* Google Business Profile Card */
+.google-card {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 280px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.06);
+  z-index: 5;
+  transform: rotate(1deg);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+.google-card:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+.google-card-searchbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
+.google-g-logo {
+  display: flex;
+  gap: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  font-family: 'DM Sans', sans-serif;
+}
+.google-g-logo .g1 { color: #4285F4; }
+.google-g-logo .g2 { color: #EA4335; }
+.google-g-logo .g3 { color: #FBBC05; }
+.google-g-logo .g4 { color: #4285F4; }
+.google-g-logo .g5 { color: #34A853; }
+.google-g-logo .g6 { color: #EA4335; }
+.google-search-input {
+  flex: 1;
+  height: 22px;
+  background: #f1f3f4;
+  border-radius: 20px;
+  border: none;
+  padding: 0 10px;
+  font-size: 0.52rem;
+  color: #333;
+  font-family: 'DM Sans', sans-serif;
+  display: flex;
+  align-items: center;
+}
+.google-card-body {
+  padding: 12px 14px;
+}
+.google-result-url {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.48rem;
+  color: #202124;
+  margin-bottom: 1px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.google-result-url-text {
+  color: #4d5156;
+  font-size: 0.44rem;
+}
+.google-result-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: #1a0dab;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.google-result-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.48rem;
+  color: #4d5156;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.google-result-separator {
+  height: 1px;
+  background: #e0e0e0;
+  margin: 10px 0;
+}
+.google-biz-panel {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.google-biz-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  background: url("https://images.unsplash.com/photo-1621905252507-b35492CC74b4?w=150&q=60&auto=format") center/cover;
+  flex-shrink: 0;
+}
+.google-biz-info {
+  flex: 1;
+  min-width: 0;
+}
+.google-biz-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #202124;
+  margin-bottom: 1px;
+}
+.google-biz-category {
+  font-size: 0.48rem;
+  color: #70757a;
+  font-family: 'DM Sans', sans-serif;
+  margin-bottom: 3px;
+}
+.google-stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 4px;
+}
+.google-stars-num {
+  font-size: 0.52rem;
+  font-weight: 700;
+  color: #e67700;
+  font-family: 'DM Sans', sans-serif;
+  margin-right: 2px;
+}
+.google-star {
+  color: #fbbc04;
+  font-size: 0.58rem;
+  line-height: 1;
+}
+.google-reviews {
+  font-size: 0.46rem;
+  color: #70757a;
+  font-family: 'DM Sans', sans-serif;
+  margin-left: 2px;
+}
+.google-biz-details {
+  margin-top: 4px;
+}
+.google-biz-detail {
+  font-size: 0.48rem;
+  color: #3c4043;
+  font-family: 'DM Sans', sans-serif;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.4;
+}
+.google-biz-detail-icon {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.google-biz-detail-icon svg {
+  width: 10px;
+  height: 10px;
+}
+.google-biz-website {
+  color: #1a73e8;
+  font-weight: 600;
+}
+
+/* ─── Section Utilities ─── */
+section { padding: 140px 0; position: relative; }
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+  display: block;
+}
+.section-heading {
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  color: var(--teal);
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+.section-sub {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 540px;
+  line-height: 1.75;
+}
+
+/* ─── Social Proof Strip ─── */
+.proof-strip {
+  background: var(--teal);
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+.proof-strip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(200,170,130,0.04) 0%, transparent 50%, rgba(200,170,130,0.04) 100%);
+  pointer-events: none;
+}
+.proof-inner {
+  display: flex;
+  align-items: stretch;
+  min-height: 100px;
+}
+.proof-item {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+  padding: 32px 24px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.3s;
+}
+.proof-item:last-child { border-right: none; }
+.proof-item:hover { background: rgba(255,255,255,0.03); }
+.proof-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(200, 170, 130, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.proof-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.proof-text {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+}
+.proof-text strong {
+  font-family: 'Instrument Serif', serif;
+  color: var(--white);
+  font-weight: 400;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 4px;
+}
+.proof-sub {
+  font-size: 0.74rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.45;
+  display: block;
+}
+
+/* ─── Stats Section ─── */
+.stats {
+  background: var(--cream);
+  overflow: hidden;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.stats-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.stats-section-label {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.stats-left {
+  display: flex;
+  flex-direction: column;
+}
+.stats-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.stats-right .section-heading { color: var(--teal); }
+.stats-right .section-sub { margin-bottom: 0; }
+
+/* Google Search Mockup — visual hero of section */
+.google-search-mockup {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 32px 36px;
+  border: 1px solid rgba(200, 170, 130, 0.1);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 16px;
+}
+
+/* Data quote */
+.stats-quote {
+  padding: 20px 0 0;
+}
+.stats-quote-text {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.stats-quote-text .stat-highlight {
+  font-style: normal;
+  font-size: 1.4em;
+  color: var(--teal);
+  font-weight: 700;
+}
+.stats-quote-source {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.58rem;
+  color: var(--text-muted);
+  font-style: normal;
+  margin-top: 10px;
+  opacity: 0.45;
+}
+.google-search-mockup-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.google-search-mockup-logo {
+  display: flex;
+  gap: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  font-family: 'DM Sans', sans-serif;
+  flex-shrink: 0;
+}
+.google-search-mockup-logo .g1 { color: #4285F4; }
+.google-search-mockup-logo .g2 { color: #EA4335; }
+.google-search-mockup-logo .g3 { color: #FBBC05; }
+.google-search-mockup-logo .g4 { color: #4285F4; }
+.google-search-mockup-logo .g5 { color: #34A853; }
+.google-search-mockup-logo .g6 { color: #EA4335; }
+.google-search-mockup-input {
+  flex: 1;
+  height: 44px;
+  background: #f1f3f4;
+  border-radius: 22px;
+  border: 1px solid #dfe1e5;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  color: #202124;
+  position: relative;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.google-search-mockup-input:hover {
+  border-color: transparent;
+  box-shadow: 0 1px 6px rgba(32,33,36,0.18);
+}
+.google-search-mockup-input .typed-text {
+  white-space: nowrap;
+  overflow: hidden;
+}
+.google-search-mockup-input .cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--teal);
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.google-search-mockup-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: #9aa0a6;
+  display: flex;
+  align-items: center;
+}
+.google-search-mockup-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: #9aa0a6;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Consequence full-width */
+.stats-consequence {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+}
+.stats-consequence .consequence {
+  background: var(--teal);
+  border-radius: var(--radius-lg);
+  padding: 36px 44px;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  max-width: 70%;
+  border-left: 4px solid #B85C38;
+}
+.consequence-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #B85C38;
+  margin-bottom: 10px;
+  display: block;
+}
+.consequence-number {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2.8rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.consequence-text {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+}
+.consequence-text strong { color: var(--white); }
+
+/* ─── Branchen / Industries ─── */
+.branchen {
+  background: var(--off-white);
+  overflow: hidden;
+}
+.branchen-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.branchen-header .section-sub { margin: 0 auto; }
+.branchen-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 48px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.branchen-tab {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 12px 26px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: var(--shadow-xs);
+}
+.branchen-tab:hover {
+  border-color: var(--gold);
+  color: var(--teal);
+  box-shadow: var(--shadow-sm);
+}
+.branchen-tab.active {
+  background: var(--teal);
+  color: var(--white);
+  border-color: var(--teal);
+  box-shadow: 0 4px 16px rgba(26, 58, 74, 0.25);
+}
+
+.branchen-content {
+  display: none;
+  animation: fadeTab 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.branchen-content.active {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: stretch;
+}
+@keyframes fadeTab {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+.branchen-visual {
+  border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: var(--shadow-lg);
+}
+.branchen-visual-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.branchen-visual-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.branchen-visual-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 31, 43, 0.1) 0%,
+    rgba(12, 31, 43, 0.3) 40%,
+    rgba(12, 31, 43, 0.85) 75%,
+    rgba(12, 31, 43, 0.95) 100%
+  );
+}
+.branchen-visual-text {
+  position: relative;
+  z-index: 2;
+  padding: 48px 40px;
+}
+.branchen-visual-text h3 {
+  font-size: 2rem;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.branchen-visual-text p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.65;
+  max-width: 360px;
+}
+
+.branchen-features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.branchen-feature {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 24px 28px;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid rgba(200, 170, 130, 0.08);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-xs);
+}
+.branchen-feature:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateX(6px);
+  border-color: rgba(200, 170, 130, 0.2);
+}
+.feature-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(200, 170, 130, 0.12), rgba(200, 170, 130, 0.04));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.feature-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.feature-text h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--teal);
+  margin-bottom: 4px;
+}
+.feature-text p {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* ─── Process ─── */
+.process {
+  background: var(--teal-deep);
+  position: relative;
+  overflow: hidden;
+}
+.process::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 600px 500px at 20% 80%, rgba(200, 170, 130, 0.04) 0%, transparent 100%),
+    radial-gradient(ellipse 500px 400px at 80% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+  pointer-events: none;
+}
+.process-header {
+  text-align: center;
+  margin-bottom: 88px;
+  position: relative;
+}
+.process .section-heading { color: var(--white); }
+.process .section-sub { color: rgba(255,255,255,0.5); margin: 0 auto; }
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+  align-items: stretch;
+}
+.process-connector {
+  position: absolute;
+  top: 48px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), rgba(200,170,130,0.3), var(--gold));
+  opacity: 0.2;
+}
+.process-step {
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.step-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(200, 170, 130, 0.06);
+  border: 2px solid rgba(200, 170, 130, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s;
+}
+.step-circle-inner {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+.process-step:hover .step-circle {
+  background: rgba(200, 170, 130, 0.12);
+  border-color: var(--gold);
+  box-shadow: 0 0 30px rgba(200, 170, 130, 0.15);
+}
+.process-step h3 {
+  font-size: 1.3rem;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.process-step p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.65;
+  max-width: 220px;
+  margin: 0 auto;
+}
+.step-tag {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(200, 170, 130, 0.08);
+  border: 1px solid rgba(200, 170, 130, 0.12);
+  padding: 6px 14px;
+  border-radius: 100px;
+}
+
+/* ─── Value / Invest section ─── */
+.value-section {
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.value-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: stretch;
+}
+.value-image {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-xl);
+}
+.value-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.value-image::after { display: none; }
+.value-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.value-header .section-label {
+  display: block;
+}
+.value-header .section-heading {
+  margin-left: auto;
+  margin-right: auto;
+}
+.value-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 56px;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+.value-copy {}
+.value-copy p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+.value-copy .highlight-price {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.3rem;
+  color: var(--teal);
+  background: linear-gradient(135deg, rgba(200, 170, 130, 0.12), rgba(200, 170, 130, 0.04));
+  border-left: 3px solid var(--gold);
+  padding: 20px 24px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin: 0 0 28px;
+  line-height: 1.5;
+}
+.value-copy .highlight-price strong {
+  color: var(--gold);
+}
+.value-features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 28px;
+}
+.value-feat {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+.value-feat-check {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(200, 170, 130, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+/* ─── Final CTA ─── */
+.final-cta {
+  background: var(--teal-deep);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 160px 0;
+}
+.final-cta::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 1000px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 170, 130, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.final-cta::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 170, 130, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+.final-cta-content {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  z-index: 2;
+}
+.final-cta .section-label { color: var(--gold-light); }
+.final-cta .section-heading {
+  color: var(--white);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin-bottom: 20px;
+}
+.final-cta-sub {
+  font-size: 1.08rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 48px;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.final-cta .btn-primary {
+  font-size: 1.1rem;
+  padding: 22px 52px;
+}
+
+/* ─── Footer ─── */
+footer {
+  background: var(--teal-deep);
+  padding: 64px 0 40px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 56px;
+}
+.footer-brand .nav-logo {
+  color: var(--white);
+  margin-bottom: 16px;
+  display: block;
+}
+.footer-brand p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.65;
+  max-width: 300px;
+}
+.footer-col h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 20px;
+}
+.footer-col a {
+  display: block;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 12px;
+  transition: color 0.3s;
+}
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom {
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-bottom p {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.25);
+}
+
+/* ─── Legal Pages (Impressum / Datenschutz) ─── */
+.legal-section {
+  background: var(--cream);
+  padding: 100px 0 80px;
+  border-top: 1px solid var(--border);
+}
+.legal-section + .legal-section {
+  padding-top: 0;
+  border-top: none;
+}
+.legal-content {
+  max-width: 720px;
+}
+.legal-content h2 {
+  font-size: 2rem;
+  color: var(--teal);
+  margin-bottom: 32px;
+}
+.legal-content h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--teal);
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+.legal-content p, .legal-content li {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+.legal-content ul {
+  list-style: disc;
+  padding-left: 24px;
+  margin-bottom: 16px;
+}
+.legal-content a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ─── Responsive ─── */
+@media (min-width: 1080px) {
+  .nav-link { display: block; }
+}
+
+@media (max-width: 1080px) {
+  .hero-split {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 8px 0 40px;
+  }
+  .hero-left { max-width: 100%; }
+  .hero-right {
+    height: 420px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .mockup-handwerker { width: 320px; }
+  .mockup-praxis { width: 270px; top: 60px; }
+  .google-card { width: 240px; }
+  .stats-layout { grid-template-columns: 1fr; gap: 48px; }
+  .stats-right { max-width: 100%; }
+  .value-layout { grid-template-columns: 1fr; gap: 48px; }
+  .value-image { min-height: 360px; }
+  .value-copy { max-width: 100%; }
+}
+
+@media (max-width: 960px) {
+  .branchen-content.active { grid-template-columns: 1fr; }
+  .branchen-visual { min-height: 300px; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .process-connector { display: none; }
+  .proof-inner { flex-wrap: wrap; }
+  .proof-item { flex: 1 1 45%; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .proof-item:nth-child(2) { border-right: none; }
+  .proof-item:nth-child(3), .proof-item:nth-child(4) { border-bottom: none; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+@media (max-width: 640px) {
+  section { padding: 100px 0; }
+  .container { padding: 0 20px; }
+  .hero-split { padding: 4px 0 28px; gap: 36px; }
+  .hero h1 { font-size: clamp(2rem, 7.5vw, 2.6rem); }
+  .hero-sub { font-size: 0.92rem; }
+  .hero-right {
+    height: 360px;
+    max-width: 100%;
+  }
+  .mockup-handwerker {
+    width: 260px;
+    right: -10px;
+  }
+  .mockup-praxis {
+    width: 230px;
+    top: 50px;
+    left: -10px;
+  }
+  .google-card {
+    width: 210px;
+    padding: 14px;
+    bottom: 10px;
+    right: 5px;
+  }
+  .google-biz-img { width: 48px; height: 48px; }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .btn-primary { padding: 18px 36px; font-size: 0.95rem; justify-content: center; }
+  .stat-card {
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .process-grid { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
+  .branchen-tabs { gap: 6px; justify-content: flex-start; }
+  .branchen-tab { font-size: 0.82rem; padding: 10px 18px; }
+  .branchen-visual { min-height: 260px; }
+  .branchen-visual-text { padding: 32px 24px; }
+  .branchen-visual-text h3 { font-size: 1.5rem; }
+  .final-cta { padding: 120px 0; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .value-image { min-height: 280px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── Navigation ─── -->
+<nav id="nav">
+  <div class="container">
+    <span class="nav-logo">Eden Growth Partners</span>
+    <div class="nav-links">
+      <a href="#warum" class="nav-link">Warum</a>
+      <a href="#branchen" class="nav-link">Branchen</a>
+      <a href="#ablauf" class="nav-link">Ablauf</a>
+      <a href="https://calendly.com/contact-edengrowthpartners/30min" class="nav-cta" target="_blank" rel="noopener">
+        Termin buchen
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10h10M12 7l3 3-3 3"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── Hero ─── -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80&auto=format" alt="" loading="eager">
+  </div>
+  <div class="hero-grain"></div>
+  <div class="container">
+    <div class="hero-split">
+      <!-- LEFT: Copy -->
+      <div class="hero-left">
+        <div class="hero-badge reveal">
+          <span class="hero-badge-dot"></span>
+          Websites f&uuml;r Schweizer KMU
+        </div>
+        <h1 class="reveal reveal-delay-1">
+          Wer online nicht sichtbar ist, <span class="gold">verliert Kunden. Jeden Tag.</span>
+        </h1>
+        <p class="hero-sub reveal reveal-delay-2">
+          82% der Schweizer suchen Dienstleistungen online.<br>Eine professionelle Website macht Ihr Unternehmen sichtbar, schafft Vertrauen und bringt Ihnen somit messbar mehr Umsatz.
+        </p>
+        <div class="hero-actions reveal reveal-delay-3">
+          <a href="https://calendly.com/contact-edengrowthpartners/30min" class="btn-primary" target="_blank" rel="noopener">
+            Kostenloses Erstgespr&auml;ch buchen
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10h10M12 7l3 3-3 3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Mockups -->
+      <div class="hero-right reveal-scale">
+
+        <!-- Mockup 1: Handwerker Website -->
+        <div class="browser-frame mockup-handwerker">
+          <div class="browser-topbar">
+            <span class="browser-dot red"></span>
+            <span class="browser-dot yellow"></span>
+            <span class="browser-dot green"></span>
+            <span class="browser-url">www.meier-elektro.ch</span>
+          </div>
+          <div class="browser-body">
+            <div class="mockup-hw-nav">
+              <span class="mockup-hw-logo">Meier Elektro AG</span>
+              <div class="mockup-hw-nav-items">
+                <span class="mockup-hw-nav-item">Leistungen</span>
+                <span class="mockup-hw-nav-item">Referenzen</span>
+                <span class="mockup-hw-nav-item">Kontakt</span>
+                <span class="mockup-hw-nav-tel">044 123 45 67</span>
+              </div>
+            </div>
+            <div class="mockup-hw-hero">
+              <div class="mockup-hw-hero-img"></div>
+              <div class="mockup-hw-hero-overlay">
+                <span class="mockup-hw-title">Ihr Elektriker<br>in Z&uuml;rich</span>
+                <span class="mockup-hw-subtitle">Schnell, zuverl&auml;ssig, fair. Seit 2011.</span>
+                <span class="mockup-hw-btn">Offerte anfragen</span>
+              </div>
+            </div>
+            <div class="mockup-hw-content">
+              <div class="mockup-hw-section-title">Unsere Leistungen</div>
+              <div class="mockup-hw-services">
+                <div class="mockup-hw-service">
+                  <span class="mockup-hw-service-dot"></span>
+                  <span class="mockup-hw-service-name">Elektroinstallationen</span>
+                  <span class="mockup-hw-service-desc">Neubau &amp; Sanierung</span>
+                </div>
+                <div class="mockup-hw-service">
+                  <span class="mockup-hw-service-dot"></span>
+                  <span class="mockup-hw-service-name">St&ouml;rungsdienst 24h</span>
+                  <span class="mockup-hw-service-desc">Notfall-Service</span>
+                </div>
+                <div class="mockup-hw-service">
+                  <span class="mockup-hw-service-dot"></span>
+                  <span class="mockup-hw-service-name">Elektrokontrollen</span>
+                  <span class="mockup-hw-service-desc">NIV-konform</span>
+                </div>
+                <div class="mockup-hw-service">
+                  <span class="mockup-hw-service-dot"></span>
+                  <span class="mockup-hw-service-name">Smart Home</span>
+                  <span class="mockup-hw-service-desc">Beratung &amp; Einbau</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mockup 2: Praxis Website -->
+        <div class="browser-frame mockup-praxis">
+          <div class="browser-topbar">
+            <span class="browser-dot red"></span>
+            <span class="browser-dot yellow"></span>
+            <span class="browser-dot green"></span>
+            <span class="browser-url">www.praxis-gesundheit.ch</span>
+          </div>
+          <div class="browser-body">
+            <div class="mockup-pr-nav">
+              <span class="mockup-pr-logo">Praxis Gesundheit</span>
+              <div class="mockup-pr-nav-items">
+                <span class="mockup-pr-nav-item">Team</span>
+                <span class="mockup-pr-nav-item">Angebot</span>
+                <span class="mockup-pr-cta-btn">Termin buchen</span>
+              </div>
+            </div>
+            <div class="mockup-pr-hero">
+              <div class="mockup-pr-hero-img"></div>
+              <div class="mockup-pr-hero-overlay">
+                <div class="mockup-pr-img"></div>
+                <div class="mockup-pr-text">
+                  <h4>Dr. med. Anna M&uuml;ller</h4>
+                  <p>Allgemeinmedizin &amp; Pr&auml;vention.<br>Pers&ouml;nlich. Kompetent. Nah.</p>
+                </div>
+              </div>
+            </div>
+            <div class="mockup-pr-content">
+              <div class="mockup-pr-section-title">Unsere Leistungen</div>
+              <div class="mockup-pr-list">
+                <div class="mockup-pr-list-item">
+                  <span class="mockup-pr-list-name">Allgemeine Sprechstunde</span>
+                  <span class="mockup-pr-list-arrow">&#x203A;</span>
+                </div>
+                <div class="mockup-pr-list-item">
+                  <span class="mockup-pr-list-name">Check-up &amp; Vorsorge</span>
+                  <span class="mockup-pr-list-arrow">&#x203A;</span>
+                </div>
+                <div class="mockup-pr-list-item">
+                  <span class="mockup-pr-list-name">Labordiagnostik</span>
+                  <span class="mockup-pr-list-arrow">&#x203A;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Business Profile Card -->
+        <div class="google-card">
+          <div class="google-card-searchbar">
+            <div class="google-g-logo"><span class="g1">G</span><span class="g2">o</span><span class="g3">o</span><span class="g4">g</span><span class="g5">l</span><span class="g6">e</span></div>
+            <div class="google-search-input">elektriker z&uuml;rich</div>
+          </div>
+          <div class="google-card-body">
+            <div class="google-result-url">
+              meier-elektro.ch
+              <span class="google-result-url-text">&#x203A; Startseite</span>
+            </div>
+            <div class="google-result-title">Meier Elektro AG | Ihr Elektriker in Z&uuml;rich</div>
+            <div class="google-result-desc">Elektroinstallationen, St&ouml;rungsdienst und Smart Home. Zuverl&auml;ssig, fair und schnell. Jetzt Offerte anfragen.</div>
+            <div class="google-result-separator"></div>
+            <div class="google-biz-panel">
+              <div class="google-biz-img"></div>
+              <div class="google-biz-info">
+                <div class="google-biz-name">Meier Elektro AG</div>
+                <div class="google-biz-category">Elektriker</div>
+                <div class="google-stars">
+                  <span class="google-stars-num">5.0</span>
+                  <span class="google-star">&#9733;</span>
+                  <span class="google-star">&#9733;</span>
+                  <span class="google-star">&#9733;</span>
+                  <span class="google-star">&#9733;</span>
+                  <span class="google-star">&#9733;</span>
+                  <span class="google-reviews">(47)</span>
+                </div>
+                <div class="google-biz-details">
+                  <div class="google-biz-detail">
+                    <span class="google-biz-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#70757a" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                    Technoparkstr. 12, Z&uuml;rich
+                  </div>
+                  <div class="google-biz-detail">
+                    <span class="google-biz-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg></span>
+                    <span class="google-biz-website">www.meier-elektro.ch</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Social Proof Strip ─── -->
+<div class="proof-strip">
+  <div class="proof-inner">
+    <div class="proof-item reveal">
+      <div class="proof-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="proof-text">
+        <strong>Professionell</strong>
+        <span class="proof-sub">Website-Experten mit Branchenexpertise, individuell f&uuml;r Ihr Unternehmen angewandt</span>
+      </div>
+    </div>
+    <div class="proof-item reveal reveal-delay-1">
+      <div class="proof-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div class="proof-text">
+        <strong>In 10 Tagen live</strong>
+        <span class="proof-sub">Von der Idee zur fertigen Website in unter zwei Wochen.</span>
+      </div>
+    </div>
+    <div class="proof-item reveal reveal-delay-2">
+      <div class="proof-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <div class="proof-text">
+        <strong>Garantiert unter CHF 3'000</strong>
+        <span class="proof-sub">Statt CHF 5'000 bis 15'000 bei gew&ouml;hnlichen Webagenturen.</span>
+      </div>
+    </div>
+    <div class="proof-item reveal reveal-delay-3">
+      <div class="proof-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+      </div>
+      <div class="proof-text">
+        <strong>Alles inklusive</strong>
+        <span class="proof-sub">Design, Texte, Domain, Hosting, SEO, Google-Business-Profil.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Stats ─── -->
+<section class="stats" id="warum">
+  <div class="container">
+    <div class="stats-section-label reveal">
+      <span class="section-label">Die Realit&auml;t</span>
+    </div>
+    <div class="stats-layout">
+      <!-- LEFT: Google search mockup (hero) + compact stat card -->
+      <div class="stats-left">
+        <div class="google-search-mockup reveal">
+          <div class="google-search-mockup-bar">
+            <div class="google-search-mockup-logo"><span class="g1">G</span><span class="g2">o</span><span class="g3">o</span><span class="g4">g</span><span class="g5">l</span><span class="g6">e</span></div>
+            <div class="google-search-mockup-input">
+              <span class="typed-text" id="typed-search"></span><span class="cursor"></span>
+            </div>
+            <div class="google-search-mockup-icon">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="stats-quote reveal reveal-delay-1">
+          <p class="stats-quote-text">&bdquo;<span class="stat-highlight">82%</span> der Schweizer Konsumenten suchen online nach lokalen Dienstleistungen, ...<br>aber nur <span class="stat-highlight">36%</span> der Schweizer Kleinunternehmen haben eine eigene Website.&ldquo;</p>
+          <span class="stats-quote-source">Quellen: BFS / localsearch Studie, BFS Strukturerhebung</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: Heading + descriptive text -->
+      <div class="stats-right reveal">
+        <h2 class="section-heading">Ihre Kunden suchen online.<br>Finden sie Sie?</h2>
+        <p class="section-sub">Die Mehrheit der Schweizer Konsumenten informiert sich im Internet, bevor sie einen Handwerker, eine Arztpraxis, einen Coiffeur, ein Restaurant oder einen Berater w&auml;hlen. Wer dort nicht professionell pr&auml;sent ist, existiert f&uuml;r diese Kunden schlicht nicht.</p>
+      </div>
+
+      <!-- FULL WIDTH: 7 von 10 consequence -->
+      <div class="stats-consequence reveal">
+        <div class="consequence">
+          <span class="consequence-label">Die Konsequenz</span>
+          <div class="consequence-number">7 von 10</div>
+          <p class="consequence-text">potenzielle Kunden <strong>entscheiden sich unwissend gegen Sie,</strong> weil sie online nicht auf Ihr Unternehmen stossen. Das kostet t&auml;glich realen Umsatz.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Branchen ─── -->
+<section class="branchen" id="branchen">
+  <div class="container">
+    <div class="branchen-header reveal">
+      <span class="section-label">Branchen</span>
+      <h2 class="section-heading">Massgeschneidert f&uuml;r Ihr Gewerbe</h2>
+      <p class="section-sub">Jede Branche hat eigene Anforderungen. Wir kennen sie und bauen genau die Website, die f&uuml;r Sie funktioniert.</p>
+    </div>
+
+    <div class="branchen-tabs reveal">
+      <button class="branchen-tab active" data-tab="handwerk">Handwerk</button>
+      <button class="branchen-tab" data-tab="praxen">Praxen</button>
+      <button class="branchen-tab" data-tab="beauty">Beauty</button>
+      <button class="branchen-tab" data-tab="gastro">Gastro</button>
+      <button class="branchen-tab" data-tab="beratung">Beratung</button>
+    </div>
+
+    <!-- Handwerk -->
+    <div class="branchen-content active" id="tab-handwerk">
+      <div class="branchen-visual">
+        <div class="branchen-visual-img">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80&auto=format" alt="Handwerker bei der Arbeit" loading="lazy">
+        </div>
+        <div class="branchen-visual-text">
+          <h3>Handwerk &amp; Gewerbe</h3>
+          <p>Elektriker, Sanit&auml;r, Maler, Schreiner. Ihre Arbeit spricht f&uuml;r sich. Wir sorgen daf&uuml;r, dass man Sie auch findet.</p>
+        </div>
+      </div>
+      <div class="branchen-features">
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="feature-text">
+            <h4>Lokale Sichtbarkeit</h4>
+            <p>Google-optimiert f&uuml;r Ihre Region, damit Kunden in Ihrer N&auml;he Sie sofort finden.</p>
+          </div>
+        </div>
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="feature-text">
+            <h4>Referenz-Galerie</h4>
+            <p>Zeigen Sie Ihre besten Projekte. Bilder &uuml;berzeugen mehr als jeder Text.</p>
+          </div>
+        </div>
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div class="feature-text">
+            <h4>Direkte Kontaktaufnahme</h4>
+            <p>Click-to-Call, Kontaktformular und Notfall-Nummer prominent platziert.</p>
+          </div>
+        </div>
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div class="feature-text">
+            <h4>Kundenbewertungen</h4>
+            <p>Integration von Google Reviews f&uuml;r maximales Vertrauen bei Neukunden.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Praxen -->
+    <div class="branchen-content" id="tab-praxen">
+      <div class="branchen-visual">
+        <div class="branchen-visual-img">
+          <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80&auto=format" alt="Moderne Arztpraxis" loading="lazy">
+        </div>
+        <div class="branchen-visual-text">
+          <h3>Praxen &amp; Therapie</h3>
+          <p>&Auml;rzte, Physiotherapeuten, Psychologen. Patienten beurteilen Ihre Professionalit&auml;t online, bevor sie zum H&ouml;rer greifen.</p>
+        </div>
+      </div>
+      <div class="branchen-features">
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <div class="feature-text">
+            <h4>Online-Terminbuchung</h4>
+            <p>Patienten buchen direkt. Weniger Telefonate, weniger Ausf&auml;lle.</p>
+          </div>
+        </div>
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="feature-text">
+            <h4>Team &amp; Kompetenz</h4>
+            <p>Vorstellung Ihres Teams und Ihrer Spezialisierungen schafft Vertrauen.</p>
+          </div>
+        </div>
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></div>
+          <div class="feature-text">
+            <h4>Anfahrt &amp; Erreichbarkeit</h4>
+            <p>Karte, &Ouml;ffnungszeiten und Parkplatz-Infos auf einen Blick.</p>
+          </div>
+        </div>
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="feature-text">
+            <h4>Datenschutz-konform</h4>
+            <p>nDSG-konformes Design f&uuml;r sensible Patientendaten.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beauty -->
+    <div class="branchen-content" id="tab-beauty">
+      <div class="branchen-visual">
+        <div class="branchen-visual-img">
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80&auto=format" alt="Beauty Salon" loading="lazy">
+        </div>
+        <div class="branchen-visual-text">
+          <h3>Beauty &amp; Wellness</h3>
+          <p>Coiffeure, Kosmetik, Nagelstudios, Massage. Ihre Kundinnen und Kunden beurteilen Ihre &Auml;sthetik online, bevor sie einen Termin buchen.</p>
+        </div>
+      </div>
+      <div class="branchen-features">
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <div class="feature-text">
+            <h4>Booking-Integration</h4>
+            <p>Kunden buchen Ihren Wunschtermin 24/7, auch ausserhalb der &Ouml;ffnungszeiten.</p>
+          </div>
+        </div>
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="feature-text">
+            <h4>Preisliste &amp; Angebote</h4>
+            <p>&Uuml;bersichtliche Darstellung aller Treatments mit Preisen und Dauer.</p>
+          </div>
+        </div>
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="feature-text">
+            <h4>Vorher/Nachher Galerie</h4>
+            <p>Zeigen Sie Ihre Ergebnisse. Das &uuml;berzeugt mehr als jeder Text.</p>
+          </div>
+        </div>
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg></div>
+          <div class="feature-text">
+            <h4>Social-Media-Anbindung</h4>
+            <p>Instagram-Feed direkt auf der Website f&uuml;r aktuelle Eindr&uuml;cke.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gastro -->
+    <div class="branchen-content" id="tab-gastro">
+      <div class="branchen-visual">
+        <div class="branchen-visual-img">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80&auto=format" alt="Restaurant Interieur" loading="lazy">
+        </div>
+        <div class="branchen-visual-text">
+          <h3>Gastronomie</h3>
+          <p>Restaurants, Caf&eacute;s, Bars, Catering. G&auml;ste entscheiden anhand von Speisekarte, Ambiente und Bewertungen, wo sie essen gehen.</p>
+        </div>
+      </div>
+      <div class="branchen-features">
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg></div>
+          <div class="feature-text">
+            <h4>Digitale Speisekarte</h4>
+            <p>Immer aktuell, einfach zu pflegen. Mit Allergenen und saisonalen Highlights.</p>
+          </div>
+        </div>
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <div class="feature-text">
+            <h4>Tischreservation</h4>
+            <p>Online-Reservation reduziert No-Shows und spart Ihrem Team Zeit.</p>
+          </div>
+        </div>
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="feature-text">
+            <h4>Google Maps &amp; Bewertungen</h4>
+            <p>Standort, &Ouml;ffnungszeiten und Bewertungen direkt sichtbar.</p>
+          </div>
+        </div>
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+          <div class="feature-text">
+            <h4>Food-Fotografie Galerie</h4>
+            <p>Appetitliche Bilder, die Lust auf einen Besuch machen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beratung -->
+    <div class="branchen-content" id="tab-beratung">
+      <div class="branchen-visual">
+        <div class="branchen-visual-img">
+          <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=800&q=80&auto=format" alt="Business Meeting" loading="lazy">
+        </div>
+        <div class="branchen-visual-text">
+          <h3>Beratung &amp; Coaching</h3>
+          <p>Unternehmensberatung, Coaching, Treuhand. Kompetenz zeigen, bevor das erste Gespr&auml;ch beginnt.</p>
+        </div>
+      </div>
+      <div class="branchen-features">
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <div class="feature-text">
+            <h4>Positionierung &amp; Expertise</h4>
+            <p>Klare Darstellung Ihrer Kompetenzen und Alleinstellungsmerkmale.</p>
+          </div>
+        </div>
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <div class="feature-text">
+            <h4>Calendly-Integration</h4>
+            <p>Erstgespr&auml;che automatisiert buchen, ohne E-Mail-Ping-Pong.</p>
+          </div>
+        </div>
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <div class="feature-text">
+            <h4>Case Studies</h4>
+            <p>Erfolgsgeschichten und Referenzen, die Vertrauen schaffen.</p>
+          </div>
+        </div>
+        <div class="branchen-feature">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+          <div class="feature-text">
+            <h4>Zertifikate &amp; Partner</h4>
+            <p>Logos und Auszeichnungen f&uuml;r zus&auml;tzliche Glaubw&uuml;rdigkeit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Process ─── -->
+<section class="process" id="ablauf">
+  <div class="container">
+    <div class="process-header reveal">
+      <span class="section-label">So funktioniert's</span>
+      <h2 class="section-heading">In 4 Schritten zu Ihrer Website</h2>
+      <p class="section-sub">Kein technisches Wissen n&ouml;tig, kein Stress.<br>Wir &uuml;bernehmen alles.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-connector"></div>
+      <div class="process-step reveal">
+        <div class="step-circle"><span class="step-circle-inner">1</span></div>
+        <span class="step-tag">Tag 1&#8211;2</span>
+        <h3>Erstgespr&auml;ch</h3>
+        <p>30 Minuten, kostenlos. Wir lernen Ihr Gesch&auml;ft kennen und beraten Sie ehrlich.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-circle"><span class="step-circle-inner">2</span></div>
+        <span class="step-tag">Tag 3&#8211;5</span>
+        <h3>Konzept &amp; Inhalte</h3>
+        <p>Wir erstellen Struktur und Texte. Sie liefern Bilder und Feedback.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-circle"><span class="step-circle-inner">3</span></div>
+        <span class="step-tag">Tag 6&#8211;8</span>
+        <h3>Ihre Vorschau</h3>
+        <p>Sie sehen Ihre fertige Website vorab und k&ouml;nnen &Auml;nderungen w&uuml;nschen.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-circle"><span class="step-circle-inner">4</span></div>
+        <span class="step-tag">Tag 9&#8211;10</span>
+        <h3>Live &amp; sichtbar</h3>
+        <p>Desktop, Mobil, Google und KI-Suche. Alles eingerichtet. Ihre Website ist online.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Value / Investment ─── -->
+<section class="value-section">
+  <div class="container">
+    <div class="value-header reveal">
+      <span class="section-label">Ihre Investition</span>
+      <h2 class="section-heading">Professionell muss nicht teuer sein</h2>
+    </div>
+    <p class="value-intro reveal">Andere Website-Agenturen verlangen oft CHF 5'000 bis 15'000 f&uuml;r eine Firmenwebsite.<br>Da sie keine Branchenexpertise haben, m&uuml;ssen sie oft das Rad neu erfinden und bauen unn&ouml;tig aufwendige Websites, oft auch um den Umsatz nach oben zu treiben.<br>F&uuml;r viele Kleinunternehmen ist das schlicht unn&ouml;tig und zu teuer. Genau deshalb gibt es uns.</p>
+    <div class="value-layout">
+      <div class="value-image reveal-scale">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80&auto=format" alt="Webdesign am Laptop" loading="lazy">
+      </div>
+      <div class="value-copy reveal">
+        <div class="highlight-price">
+          Eine simple, aber effektive und professionelle Website.<br><strong>F&uuml;r weniger als CHF 3'000.</strong> Fertig in unter 2 Wochen.
+        </div>
+        <div class="value-features">
+          <div class="value-feat">
+            <div class="value-feat-check">&#x2713;</div>
+            Individuelles Design
+          </div>
+          <div class="value-feat">
+            <div class="value-feat-check">&#x2713;</div>
+            Professionelle Texte
+          </div>
+          <div class="value-feat">
+            <div class="value-feat-check">&#x2713;</div>
+            Domain-Registrierung
+          </div>
+          <div class="value-feat">
+            <div class="value-feat-check">&#x2713;</div>
+            Hosting &amp; SSL
+          </div>
+          <div class="value-feat">
+            <div class="value-feat-check">&#x2713;</div>
+            SEO-Optimierung
+          </div>
+          <div class="value-feat">
+            <div class="value-feat-check">&#x2713;</div>
+            Mobiloptimierung
+          </div>
+          <div class="value-feat">
+            <div class="value-feat-check">&#x2713;</div>
+            Google-Business-Profil
+          </div>
+          <div class="value-feat">
+            <div class="value-feat-check">&#x2713;</div>
+            Impressum &amp; Datenschutz
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Final CTA ─── -->
+<section class="final-cta">
+  <div class="container">
+    <div class="final-cta-content reveal">
+      <span class="section-label">N&auml;chster Schritt</span>
+      <h2 class="section-heading">Bereit f&uuml;r mehr Umsatz dank eines professionellen digitalen Auftritts?</h2>
+      <p class="final-cta-sub">30 Minuten, kostenlos und unverbindlich. Wir zeigen Ihnen, wie Ihre Website aussehen k&ouml;nnte und was sie Ihrem Gesch&auml;ft bringt.</p>
+      <a href="https://calendly.com/contact-edengrowthpartners/30min" class="btn-primary" target="_blank" rel="noopener">
+        Jetzt Termin vereinbaren
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10h10M12 7l3 3-3 3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ─── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="nav-logo">Eden Growth Partners</span>
+        <p>Professionelle Websites f&uuml;r Schweizer Kleinunternehmen. Schnell, fair und wirkungsvoll.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <a href="mailto:contact@edengrowthpartners.com">contact@edengrowthpartners.com</a>
+        <a>Z&uuml;rich, Schweiz</a>
+      </div>
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Eden Growth Partners. Alle Rechte vorbehalten.</p>
+      <p>Handgemacht in Z&uuml;rich</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── Scripts ─── -->
+<script>
+// Scroll-triggered reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-scale').forEach(el => observer.observe(el));
+
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+// Branchen tabs
+document.querySelectorAll('.branchen-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.branchen-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.branchen-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Google search typing animation
+(function() {
+  const queries = [
+    'Bester Elektriker in Zürich',
+    'Zahnarzt Notfall Zürich',
+    'Bestes Nagelstudio in meiner Nähe',
+    'Restaurant mit Terrasse Basel',
+    'Physiotherapie Bern Bewertungen',
+    'Coiffeur Luzern Preise',
+    'Treuhand Winterthur Empfehlung'
+  ];
+  const el = document.getElementById('typed-search');
+  if (!el) return;
+  let qIdx = 0;
+  let cIdx = 0;
+  let deleting = false;
+
+  function tick() {
+    const q = queries[qIdx];
+    if (!deleting) {
+      cIdx++;
+      el.textContent = q.slice(0, cIdx);
+      if (cIdx >= q.length) {
+        setTimeout(function() { deleting = true; tick(); }, 2000);
+        return;
+      }
+      setTimeout(tick, 80);
+    } else {
+      cIdx--;
+      el.textContent = q.slice(0, cIdx);
+      if (cIdx <= 0) {
+        deleting = false;
+        qIdx = (qIdx + 1) % queries.length;
+        setTimeout(tick, 400);
+        return;
+      }
+      setTimeout(tick, 35);
+    }
+  }
+  tick();
+})();
+</script>
+</body>
+</html>
